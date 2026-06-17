@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Novel2Video PromptEngine</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <h1>Novel2Video PromptEngine</h1>
+        <p>小说漫剧化提示词引擎</p>
+      </div>
+      <button id="generateBtn" class="primary-button">生成</button>
+    </header>
+
+    <main class="workspace">
+      <section class="pane input-pane" aria-label="小说输入">
+        <div class="pane-title">
+          <h2>小说原文</h2>
+          <button id="loadSampleBtn" class="ghost-button">示例</button>
+        </div>
+        <textarea id="novelInput" spellcheck="false"></textarea>
+        <div class="control-row">
+          <label><input type="checkbox" name="platform" value="jimeng" checked /> 即梦</label>
+          <label><input type="checkbox" name="platform" value="kling" checked /> 可灵</label>
+          <label><input type="checkbox" name="platform" value="runway" /> Runway</label>
+          <label><input type="checkbox" name="platform" value="liblibai" /> LiblibAI</label>
+          <label><input type="checkbox" name="platform" value="oiioii" /> OiiOii</label>
+        </div>
+      </section>
+
+      <section class="pane timeline-pane" aria-label="分镜时间轴">
+        <div class="pane-title">
+          <h2>分镜时间轴</h2>
+          <button id="copyJsonBtn" class="ghost-button">复制JSON</button>
+        </div>
+        <div id="timeline" class="timeline empty-state">等待生成</div>
+      </section>
+
+      <section class="pane prompt-pane" aria-label="平台提示词">
+        <div class="pane-title">
+          <h2>平台 Prompt</h2>
+          <button id="regenerateBtn" class="ghost-button">重新生成</button>
+        </div>
+        <div id="platformTabs" class="tabs"></div>
+        <div id="promptCards" class="prompt-list empty-state">等待生成</div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

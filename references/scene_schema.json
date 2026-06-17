@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/novel2video.scene.schema.json",
+  "title": "Novel2Video PromptEngine Result",
+  "type": "object",
+  "required": ["engine", "version", "visual_style", "scenes", "character_locks", "storyboard", "platform_prompts"],
+  "properties": {
+    "engine": { "type": "string" },
+    "version": { "type": "string" },
+    "visual_style": { "type": "string" },
+    "scenes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/scene" }
+    },
+    "character_locks": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/character_lock" }
+    },
+    "storyboard": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/storyboard_shot" }
+    },
+    "platform_prompts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "$ref": "#/$defs/platform_prompt" }
+      }
+    }
+  },
+  "$defs": {
+    "scene": {
+      "type": "object",
+      "required": [
+        "scene_id",
+        "location",
+        "time",
+        "atmosphere",
+        "characters",
+        "key_objects",
+        "camera_language",
+        "dialogue",
+        "duration_estimate",
+        "original_text"
+      ],
+      "properties": {
+        "scene_id": { "type": "integer", "minimum": 1 },
+        "location": { "type": "string" },
+        "time": { "type": "string" },
+        "atmosphere": { "type": "string" },
+        "characters": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/scene_character" }
+        },
+        "key_objects": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "camera_language": { "$ref": "#/$defs/camera_language" },
+        "dialogue": { "type": "string" },
+        "duration_estimate": { "type": "string" },
+        "action_frames": { "$ref": "#/$defs/action_frames" },
+        "visual_style": { "type": "string" },
+        "original_text": { "type": "string" }
+      }
+    },
+    "scene_character": {
+      "type": "object",
+      "required": ["name", "action", "emotion", "appearance_tag", "camera_focus"],
+      "properties": {
+        "name": { "type": "string" },
+        "action": { "type": "string" },
+        "emotion": { "type": "string" },
+        "appearance_tag": { "type": "string" },
+        "camera_focus": { "type": "string" }
+      }
+    },
+    "camera_language": {
+      "type": "object",
+      "required": ["shot_type", "camera_move", "lighting"],
+      "properties": {
+        "shot_type": { "type": "string" },
+        "camera_move": { "type": "string" },
+        "lighting": { "type": "string" }
+      }
+    },
+    "action_frames": {
+      "type": "object",
+      "required": ["start", "peak", "end"],
+      "properties": {
+        "start": { "type": "string" },
+        "peak": { "type": "string" },
+        "end": { "type": "string" }
+      }
+    },
+    "character_lock": {
+      "type": "object",
+      "required": ["name", "base_image", "style_anchor", "forbidden", "reference_image_prompt"],
+      "properties": {
+        "name": { "type": "string" },
+        "base_image": { "type": "string" },
+        "style_anchor": { "type": "string" },
+        "forbidden": { "type": "string" },
+        "emotion_range": { "type": "string" },
+        "reference_image_prompt": { "type": "string" }
+      }
+    },
+    "storyboard_shot": {
+      "type": "object",
+      "required": ["shot_no", "scene_id", "screen_content", "duration", "transition", "sound", "subtitle", "prompt_ref"],
+      "properties": {
+        "shot_no": { "type": "string" },
+        "scene_id": { "type": "string" },
+        "screen_content": { "type": "string" },
+        "duration": { "type": "string" },
+        "transition": { "type": "string" },
+        "sound": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "prompt_ref": { "type": "string" }
+      }
+    },
+    "platform_prompt": {
+      "type": "object",
+      "required": ["platform", "platform_display_name", "scene_id", "positive_prompt", "negative_prompt", "parameter_suggestion", "aspect_ratio", "duration"],
+      "properties": {
+        "platform": { "type": "string" },
+        "platform_display_name": { "type": "string" },
+        "scene_id": { "type": "string" },
+        "positive_prompt": { "type": "string" },
+        "negative_prompt": { "type": "string" },
+        "parameter_suggestion": { "type": "string" },
+        "aspect_ratio": { "type": "string" },
+        "duration": { "type": "string" }
+      }
+    }
+  }
+}

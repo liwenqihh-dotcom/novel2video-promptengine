@@ -1,0 +1,6 @@
+interface:
+  display_name: "Novel2Video PromptEngine"
+  short_description: "小说章节转分镜脚本、角色锁定与五平台AI视频提示词"
+  default_prompt: "Use $novel2video-promptengine to turn a novel chapter into storyboard JSON and platform-ready video prompts."
+policy:
+  allow_implicit_invocation: true
