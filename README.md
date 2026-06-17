@@ -171,4 +171,4 @@ Use $novel2video-promptengine to turn this novel chapter into storyboard JSON an
 
 ## License
 
-当前仓库尚未声明许可证。公开使用或二次分发前建议补充 `LICENSE`。
+私有项目，未开源，如需 fork 改造使用，请联系作者。
