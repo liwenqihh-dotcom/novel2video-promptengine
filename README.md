@@ -170,5 +170,6 @@ Use $novel2video-promptengine to turn this novel chapter into storyboard JSON an
 ```
 
 ## License
-
+```text
 私有项目，未开源，如需 fork 改造使用，请联系作者。
+```
